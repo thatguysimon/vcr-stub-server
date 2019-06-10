@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 import time
-from http.server import HTTPServer
-from server import Server
-from vcr.cassette import Cassette
-import argparse
-from http.server import BaseHTTPRequestHandler
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import vcr
+from vcr.cassette import Cassette
 from vcr.request import Request, HeadersDict
+import argparse
 from urllib.parse import urlparse
 
 
