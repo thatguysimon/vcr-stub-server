@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.22.0]
+    method: GET
+    uri: https://jsonplaceholder.typicode.com/posts/1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA1WPS2oEQQxD93MKUetssp0b5A69cVwKY+j6jMseJoTcPXRDCAEjJJAf6OsClFz0
+        t1queH05ov3ZsNhZrigre0Ay8CFKJ5yT+y6B6eNhlT0wVIUqYeBTOSPdMGbYOMrOG3ulW5QT/D7q
+        58G9pwkYWLnUpsXWfx2cmkt6FUJHX7xn9kgHn5PV4nzTbFv/h0cbO1eYEBnH3VMWYoS0rfexwrPB
+        eSjXOYkN5zpnAx/sxoC43iyoMcrl+wcVxpPoJAEAAA==
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Alt-Svc: ['quic=":443"; ma=2592000; v="46,44,43,39"']
+      Cache-Control: ['public, max-age=86400']
+      Content-Encoding: 
+        - gzip
+      Content-Length: ['749']
+      Content-Type: [application/json; charset=UTF-8]
+      Date: ['Thu, 06 Jun 2019 14:51:56 GMT']
+      Expires: ['Fri, 07 Jun 2019 14:51:56 GMT']
+      Server: [mafe]
+      Server-Timing: [gfet4t7; dur=670]
+      Vary: [Accept-Language]
+      X-Frame-Options: [SAMEORIGIN]
+      X-XSS-Protection: ['0']
+      Etag:
+      - W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d4e850549f086ea7869eb7973ddb5e65c1584204635; expires=Mon, 13-Apr-20
+        16:50:35 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+    status: {code: 200, message: OK}
+version: 1
