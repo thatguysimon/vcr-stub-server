@@ -23,11 +23,11 @@ interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Age:
-      - '4297'
+      - '2547'
       CF-Cache-Status:
       - HIT
       CF-RAY:
-      - 573f923f4b4ae69c-LHR
+      - 575969ad6d32dc33-LHR
       Cache-Control:
       - max-age=14400
       Connection:
@@ -37,7 +37,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 14 Mar 2020 17:03:59 GMT
+      - Tue, 17 Mar 2020 20:20:07 GMT
       Etag:
       - W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"
       Expect-CT:
@@ -49,8 +49,8 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - __cfduid=d87b99a3232bf36f4af389ee4bb0e42361584205439; expires=Mon, 13-Apr-20
-        17:03:59 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      - __cfduid=de6a39c8b8ab192badd361de290b7d1e11584476407; expires=Thu, 16-Apr-20
+        20:20:07 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Transfer-Encoding:
       - chunked
       Vary:

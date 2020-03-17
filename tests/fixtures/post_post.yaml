@@ -28,7 +28,7 @@ interactions:
       CF-Cache-Status:
       - DYNAMIC
       CF-RAY:
-      - 573f7e9daacde604-LHR
+      - 575969b56a3be68c-LHR
       Cache-Control:
       - no-cache
       Connection:
@@ -38,7 +38,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 14 Mar 2020 16:50:36 GMT
+      - Tue, 17 Mar 2020 20:20:10 GMT
       Etag:
       - W/"41-GDNaWfnVU6RZhpLbye0veBaqcHA"
       Expect-CT:
@@ -52,8 +52,8 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - __cfduid=d986dbf149808e821924bb31ba79efc481584204635; expires=Mon, 13-Apr-20
-        16:50:35 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      - __cfduid=d6040cd2ce57667fbe8f8c6ee555dce711584476409; expires=Thu, 16-Apr-20
+        20:20:09 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Vary:
       - Origin, X-HTTP-Method-Override, Accept-Encoding
       Via:
