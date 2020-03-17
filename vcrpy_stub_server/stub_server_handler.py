@@ -11,16 +11,16 @@ class StubServerHandler(BaseHTTPRequestHandler):
         self.respond("GET")
 
     def do_DELETE(self):
-        return
+        self.respond("DELETE")
 
     def do_POST(self):
         self.respond("POST")
 
     def do_PATCH(self):
-        return
+        self.respond("PATCH")
 
     def do_PUT(self):
-        return
+        self.respond("PUT")
       
     def respond(self, method):
         headers = vcr.request.HeadersDict(self.headers)
@@ -29,7 +29,7 @@ class StubServerHandler(BaseHTTPRequestHandler):
         if 'Content-Length' in headers:
             content_length = int(headers['Content-Length'])
             body = self.rfile.read(content_length)
-
+        
         request = vcr.request.Request(method, f"{LoadedCassette.cassette_host()}{self.path}", body, headers)
 
         response = LoadedCassette.vcr_cassette().responses_of(request)[0]

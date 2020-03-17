@@ -44,5 +44,32 @@ def test_post_request(stub_server):
     assert response.status_code == 201
 
 
+def test_patch_request(stub_server):
+    LoadedCassette("tests/fixtures/patch_post.yaml")
+    response = requests.patch("http://localhost:8181/posts/1", json={
+        "body": "baz"
+    })
+    
+    assert response.status_code == 200
+
+
+def test_put_request(stub_server):
+    LoadedCassette("tests/fixtures/put_post.yaml")
+    response = requests.put("http://localhost:8181/posts/1", json={
+        "title": "foo",
+        "body": "baz",
+        "userId": 1
+    })
+    
+    assert response.status_code == 200
+
+
+def test_delete_request(stub_server):
+    LoadedCassette("tests/fixtures/delete_post.yaml")
+    response = requests.delete("http://localhost:8181/posts/1")
+    
+    assert response.status_code == 200
+
+
 if __name__ == '__main__':
     unittest.main()

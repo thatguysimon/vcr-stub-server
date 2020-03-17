@@ -8,38 +8,34 @@ interactions:
       - gzip, deflate
       Connection:
       - keep-alive
+      Content-Length:
+      - '0'
       User-Agent:
       - python-requests/2.22.0
-    method: GET
+    method: DELETE
     uri: https://jsonplaceholder.typicode.com/posts/1
   response:
     body:
-      string: !!binary |
-        H4sIAAAAAAAAA1WPS2oEQQxD93MKUetssp0b5A69cVwKY+j6jMseJoTcPXRDCAEjJJAf6OsClFz0
-        t1queH05ov3ZsNhZrigre0Ay8CFKJ5yT+y6B6eNhlT0wVIUqYeBTOSPdMGbYOMrOG3ulW5QT/D7q
-        58G9pwkYWLnUpsXWfx2cmkt6FUJHX7xn9kgHn5PV4nzTbFv/h0cbO1eYEBnH3VMWYoS0rfexwrPB
-        eSjXOYkN5zpnAx/sxoC43iyoMcrl+wcVxpPoJAEAAA==
+      string: '{}'
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
-      Age:
-      - '2922'
       CF-Cache-Status:
-      - HIT
+      - DYNAMIC
       CF-RAY:
-      - 575972d17d61dc4f-LHR
+      - 575975fdde0fad61-TLV
       Cache-Control:
-      - max-age=14400
+      - no-cache
       Connection:
       - keep-alive
-      Content-Encoding:
-      - gzip
+      Content-Length:
+      - '2'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 17 Mar 2020 20:26:22 GMT
+      - Tue, 17 Mar 2020 20:28:36 GMT
       Etag:
-      - W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"
+      - W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Expires:
@@ -49,10 +45,8 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - __cfduid=d7fd0c49e236fc0f5aa07e1512ba77c9c1584476782; expires=Thu, 16-Apr-20
-        20:26:22 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
-      Transfer-Encoding:
-      - chunked
+      - __cfduid=d120da99916e2dccaccdb7dc5454374171584476912; expires=Thu, 16-Apr-20
+        20:28:32 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Vary:
       - Origin, Accept-Encoding
       Via:

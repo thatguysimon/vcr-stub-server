@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: null
+    body: '{"title": "foo", "body": "baz", "userId": 1}'
     headers:
       Accept:
       - '*/*'
@@ -8,28 +8,28 @@ interactions:
       - gzip, deflate
       Connection:
       - keep-alive
+      Content-Length:
+      - '44'
+      Content-Type:
+      - application/json
       User-Agent:
       - python-requests/2.22.0
-    method: GET
+    method: PUT
     uri: https://jsonplaceholder.typicode.com/posts/1
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA1WPS2oEQQxD93MKUetssp0b5A69cVwKY+j6jMseJoTcPXRDCAEjJJAf6OsClFz0
-        t1queH05ov3ZsNhZrigre0Ay8CFKJ5yT+y6B6eNhlT0wVIUqYeBTOSPdMGbYOMrOG3ulW5QT/D7q
-        58G9pwkYWLnUpsXWfx2cmkt6FUJHX7xn9kgHn5PV4nzTbFv/h0cbO1eYEBnH3VMWYoS0rfexwrPB
-        eSjXOYkN5zpnAx/sxoC43iyoMcrl+wcVxpPoJAEAAA==
+        H4sIAAAAAAAAA6rmUlBQKsksyUlVslJQSsvPV9IBiSTlp1SCBJISqyACpcWpRZ4pSlYKhmBuJpjJ
+        VQsAAAD//wMA39vs0T8AAAA=
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
-      Age:
-      - '2922'
       CF-Cache-Status:
-      - HIT
+      - DYNAMIC
       CF-RAY:
-      - 575972d17d61dc4f-LHR
+      - 57597a6cba22ad6d-TLV
       Cache-Control:
-      - max-age=14400
+      - no-cache
       Connection:
       - keep-alive
       Content-Encoding:
@@ -37,9 +37,9 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 17 Mar 2020 20:26:22 GMT
+      - Tue, 17 Mar 2020 20:31:37 GMT
       Etag:
-      - W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"
+      - W/"3f-UN6McmSTBoBaEa62ui9+LPT/gQc"
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Expires:
@@ -49,8 +49,8 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - __cfduid=d7fd0c49e236fc0f5aa07e1512ba77c9c1584476782; expires=Thu, 16-Apr-20
-        20:26:22 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      - __cfduid=df5cc06d0bd108976e38723773396314d1584477093; expires=Thu, 16-Apr-20
+        20:31:33 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Transfer-Encoding:
       - chunked
       Vary:
