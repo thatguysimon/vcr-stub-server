@@ -29,13 +29,14 @@ if __name__ == "__main__":
 
     LoadedCassette(cassette_path)
 
-    print(time.asctime(), f"Starting VCR stub server for cassette: {cassette_path} on {host}:{port}")
+    print(time.asctime(), f"Starting VCR stub server for cassette: {cassette_path}")
     http_server = HTTPServer((host, port), StubServerHandler)
 
     try:
+        print(time.asctime(), f"Server started, serving on {host}:{port}")
         http_server.serve_forever()
     except KeyboardInterrupt:
         pass
     
     http_server.server_close()
-    print(time.asctime(), "Stopped HTTP server - %s:%s" % (host, port))
+    print(time.asctime(), "Stopped server - %s:%s" % (host, port))
