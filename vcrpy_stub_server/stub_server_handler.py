@@ -1,7 +1,7 @@
 import vcr
 
 from http.server import BaseHTTPRequestHandler
-from vcrpy_stub_server.loaded_cassette import LoadedCassette
+from loaded_cassette import LoadedCassette
 
 class StubServerHandler(BaseHTTPRequestHandler):
     def do_HEAD(self):
