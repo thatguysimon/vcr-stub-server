@@ -1,1 +1,1 @@
-# vcrpy-stub-server
+# vcr-stub-server
