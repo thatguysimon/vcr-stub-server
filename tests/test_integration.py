@@ -6,9 +6,9 @@ from urllib.request import urlopen
 import requests
 import pytest
 
-from vcrpy_stub_server.stub_server_handler import StubServerHandler
+from vcr_stub_server.stub_server_handler import StubServerHandler
 from http.server import HTTPServer
-from vcrpy_stub_server.loaded_cassette import LoadedCassette
+from vcr_stub_server.loaded_cassette import LoadedCassette
 
 
 @pytest.fixture(scope="module")
