@@ -23,38 +23,27 @@ class StubServerHandler(BaseHTTPRequestHandler):
         self.respond("PUT")
       
     def respond(self, method):
-        headers = vcr.request.HeadersDict(self.headers)
-        body = None
+        request_headers = vcr.request.HeadersDict(self.headers)
+        request_body = None
 
-        if 'Content-Length' in headers:
-            content_length = int(headers['Content-Length'])
-            body = self.rfile.read(content_length)
+        if 'Content-Length' in request_headers:
+            request_content_length = int(request_headers['Content-Length'])
+            request_body = self.rfile.read(request_content_length)
         
-        request = vcr.request.Request(method, f"{LoadedCassette.cassette_host()}{self.path}", body, headers)
+        request = vcr.request.Request(method, f"{LoadedCassette.cassette_host()}{self.path}", request_body, request_headers)
 
         response = LoadedCassette.vcr_cassette().responses_of(request)[0]
         response = vcr.filters.decode_response(response)
         
-        self.send_response(response["status"]["code"])
-        
-        transfer_encoding_chunked = None
+        self.send_response(response["status"]["code"], response["status"]["message"])
         
         for header_name, header_value in response["headers"].items():
-            if header_name == 'Transfer-Encoding' and header_value == ['chunked']:
-                transfer_encoding_chunked = True
+            # Ignore Transfer-Encoding and Content-Endcoding for now
+            if header_name.lower() in ['content-encoding', 'transfer-encoding']:
                 continue
 
             self.send_header(header_name, header_value[0])
 
         self.end_headers()
 
-        if transfer_encoding_chunked:
-            content = response["body"]["string"]
-            to_write = f"{len(content)}\r\n{content}\r\n"
-            self.wfile.write(to_write.encode("utf-8"))
-            self.wfile.write("0\r\n\r\n".encode("utf-8"))
-        else:
-            self.wfile.write(response["body"]["string"])            
-
-
-        # self.wfile.write('{"userId": 1}'.encode('utf-8'))
+        self.wfile.write(response["body"]["string"])
