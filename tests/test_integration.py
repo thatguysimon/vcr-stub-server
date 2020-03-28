@@ -27,14 +27,14 @@ def stub_server():
 
 
 def test_get_request(stub_server):
-    LoadedCassette("tests/fixtures/get_posts.yaml")
+    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
     response = requests.get("http://localhost:8181/posts")
     
     assert response.status_code == 200
 
 
 def test_post_request(stub_server):
-    LoadedCassette("tests/fixtures/post_post.yaml")
+    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
     response = requests.post("http://localhost:8181/posts", json={
         "title": "foo",
         "body": "bar",
@@ -45,7 +45,7 @@ def test_post_request(stub_server):
 
 
 def test_patch_request(stub_server):
-    LoadedCassette("tests/fixtures/patch_post.yaml")
+    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
     response = requests.patch("http://localhost:8181/posts/1", json={
         "body": "baz"
     })
@@ -54,7 +54,7 @@ def test_patch_request(stub_server):
 
 
 def test_put_request(stub_server):
-    LoadedCassette("tests/fixtures/put_post.yaml")
+    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
     response = requests.put("http://localhost:8181/posts/1", json={
         "title": "foo",
         "body": "baz",
@@ -65,7 +65,7 @@ def test_put_request(stub_server):
 
 
 def test_delete_request(stub_server):
-    LoadedCassette("tests/fixtures/delete_post.yaml")
+    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
     response = requests.delete("http://localhost:8181/posts/1")
     
     assert response.status_code == 200

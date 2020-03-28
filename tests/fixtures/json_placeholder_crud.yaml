@@ -9,7 +9,72 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.22.0
+      - python-requests/2.23.0
+    method: GET
+    uri: https://jsonplaceholder.typicode.com/posts/1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA1WPS2oEQQxD93MKUetssp0b5A69cVwKY+j6jMseJoTcPXRDCAEjJJAf6OsClFz0
+        t1queH05ov3ZsNhZrigre0Ay8CFKJ5yT+y6B6eNhlT0wVIUqYeBTOSPdMGbYOMrOG3ulW5QT/D7q
+        58G9pwkYWLnUpsXWfx2cmkt6FUJHX7xn9kgHn5PV4nzTbFv/h0cbO1eYEBnH3VMWYoS0rfexwrPB
+        eSjXOYkN5zpnAx/sxoC43iyoMcrl+wcVxpPoJAEAAA==
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Age:
+      - '6325'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 57a9c9ddc9f4d8b5-AMS
+      Cache-Control:
+      - max-age=14400
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2020 14:26:48 GMT
+      Etag:
+      - W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d6a45ff0bfae42f87560ed332c2717e761585319208; expires=Sun, 26-Apr-20
+        14:26:48 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin, Accept-Encoding
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Express
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.23.0
     method: GET
     uri: https://jsonplaceholder.typicode.com/posts
   response:
@@ -143,11 +208,11 @@ interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       Age:
-      - '3845'
+      - '3342'
       CF-Cache-Status:
       - HIT
       CF-RAY:
-      - 575972d6eb00bbee-LHR
+      - 57a9c9e089cefa58-AMS
       Cache-Control:
       - max-age=14400
       Connection:
@@ -157,7 +222,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 17 Mar 2020 20:26:23 GMT
+      - Fri, 27 Mar 2020 14:26:49 GMT
       Etag:
       - W/"6b80-Ybsq/K6GwwqrYkAsFxqDXGC7DoM"
       Expect-CT:
@@ -169,10 +234,266 @@ interactions:
       Server:
       - cloudflare
       Set-Cookie:
-      - __cfduid=d700b7f077f406034dc10c632afa1c0791584476783; expires=Thu, 16-Apr-20
-        20:26:23 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      - __cfduid=db15975a12df62b5876e9ed4e8cc1edf71585319209; expires=Sun, 26-Apr-20
+        14:26:49 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Transfer-Encoding:
       - chunked
+      Vary:
+      - Origin, Accept-Encoding
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Express
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"title": "foo", "body": "bar", "userId": 1}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '44'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: POST
+    uri: https://jsonplaceholder.typicode.com/posts
+  response:
+    body:
+      string: "{\n  \"title\": \"foo\",\n  \"body\": \"bar\",\n  \"userId\": 1,\n
+        \ \"id\": 101\n}"
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - Location
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 57a9c9e549567233-AMS
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '65'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2020 14:26:53 GMT
+      Etag:
+      - W/"41-GDNaWfnVU6RZhpLbye0veBaqcHA"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Location:
+      - http://jsonplaceholder.typicode.com/posts/101
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d7046d9f78bd55d3cb67ab5318ec799ef1585319209; expires=Sun, 26-Apr-20
+        14:26:49 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      Vary:
+      - Origin, X-HTTP-Method-Override, Accept-Encoding
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Express
+    status:
+      code: 201
+      message: Created
+- request:
+    body: '{"body": "baz"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '15'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: PATCH
+    uri: https://jsonplaceholder.typicode.com/posts/1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA0SMMQ7CMBAE+7xidTUNbX7AMy72Ik6ybOtyjgKIvyPT0M1Io3kvgIydfsuy4nqZ
+        an8Mi0JZIfuoAR2BuyY64ewsRQPd22GZNdBSUiYNA8/EHsMNrYe1GTsfrJluIb/x1vJzfjd9yfL5
+        AgAA//8DAAEtQKOGAAAA
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 57a9c9ffd9f7bdd7-AMS
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2020 14:26:55 GMT
+      Etag:
+      - W/"86-TlteOT7HUp9/MZj0M+BY/t9euho"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d4b8b0f6df9726c8eb1efc4b0cca17ccb1585319214; expires=Sun, 26-Apr-20
+        14:26:54 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin, Accept-Encoding
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Express
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"title": "foo", "body": "baz", "userId": 1}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '44'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: PUT
+    uri: https://jsonplaceholder.typicode.com/posts/1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6rmUlBQKsksyUlVslJQSsvPV9IBiSTlp1SCBJISqyACpcWpRZ4pSlYKhmBuJpjJ
+        VQsAAAD//wMA39vs0T8AAAA=
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 57a9ca0f1afe725d-AMS
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2020 14:27:01 GMT
+      Etag:
+      - W/"3f-UN6McmSTBoBaEa62ui9+LPT/gQc"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d88e938b8c3391ef55483ee6435da8dda1585319216; expires=Sun, 26-Apr-20
+        14:26:56 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin, Accept-Encoding
+      Via:
+      - 1.1 vegur
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Express
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.23.0
+    method: DELETE
+    uri: https://jsonplaceholder.typicode.com/posts/1
+  response:
+    body:
+      string: '{}'
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 57a9ca322e86bf91-AMS
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Mar 2020 14:27:07 GMT
+      Etag:
+      - W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=dcc7c2ce3596569d8c8081835b216be721585319222; expires=Sun, 26-Apr-20
+        14:27:02 GMT; path=/; domain=.typicode.com; HttpOnly; SameSite=Lax
       Vary:
       - Origin, Accept-Encoding
       Via:
