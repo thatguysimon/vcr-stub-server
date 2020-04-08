@@ -9,16 +9,30 @@ from vcr_stub_server.stub_server_handler import BuildHandlerClassWithCassette
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--bind", "-b", default="localhost", metavar="ADDRESS",
-                    help="Specify alternate bind address "
-                         "[default: all interfaces]")
-parser.add_argument("--port", "-p", action="store",
-                    default=8181, type=int,
-                    nargs="?",
-                    help="Specify alternate port [default: 8000]")
-parser.add_argument("path", action="store",
-                    default=8181, type=str, metavar="FILE",
-                    help="Specify the VCR Casette file path")
+parser.add_argument(
+    "--bind",
+    "-b",
+    default="localhost",
+    metavar="ADDRESS",
+    help="Specify alternate bind address " "[default: all interfaces]",
+)
+parser.add_argument(
+    "--port",
+    "-p",
+    action="store",
+    default=8181,
+    type=int,
+    nargs="?",
+    help="Specify alternate port [default: 8000]",
+)
+parser.add_argument(
+    "path",
+    action="store",
+    default=8181,
+    type=str,
+    metavar="FILE",
+    help="Specify the VCR Casette file path",
+)
 args = parser.parse_args()
 
 host = args.bind
