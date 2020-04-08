@@ -13,6 +13,7 @@ for file_name in os.listdir(FIXTURES_FOLDER):
 with vcr.use_cassette(f"{FIXTURES_FOLDER}/json_placeholder_crud2.yaml"):
 	r = requests.get("https://jsonplaceholder.typicode.com/posts/1")
 	r = requests.get("https://jsonplaceholder.typicode.com/posts")
+	
 	r = requests.post(
 		"https://jsonplaceholder.typicode.com/posts", 
 		json={

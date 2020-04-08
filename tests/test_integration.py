@@ -6,16 +6,17 @@ from urllib.request import urlopen
 import requests
 import pytest
 
-from vcr_stub_server.stub_server_handler import StubServerHandler
+from vcr_stub_server.stub_server_handler import BuildHandlerClassWithCassette
 from http.server import HTTPServer
-from vcr_stub_server.loaded_cassette import LoadedCassette
 
 
 @pytest.fixture(scope="module")
 def stub_server():
     host = "localhost"
-    port = 8181
-    http_server = HTTPServer((host, port), StubServerHandler)
+    port = 8282
+
+    handler_class = BuildHandlerClassWithCassette(cassette_path="tests/fixtures/json_placeholder_crud.yaml")
+    http_server = HTTPServer((host, port), handler_class)
 
     server_thread = threading.Thread(target=http_server.serve_forever)
     server_thread.start()
@@ -27,15 +28,13 @@ def stub_server():
 
 
 def test_get_request(stub_server):
-    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
-    response = requests.get("http://localhost:8181/posts")
+    response = requests.get("http://localhost:8282/posts")
     
     assert response.status_code == 200
 
 
 def test_post_request(stub_server):
-    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
-    response = requests.post("http://localhost:8181/posts", json={
+    response = requests.post("http://localhost:8282/posts", json={
         "title": "foo",
         "body": "bar",
         "userId": 1
@@ -45,8 +44,7 @@ def test_post_request(stub_server):
 
 
 def test_patch_request(stub_server):
-    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
-    response = requests.patch("http://localhost:8181/posts/1", json={
+    response = requests.patch("http://localhost:8282/posts/1", json={
         "body": "baz"
     })
     
@@ -54,8 +52,7 @@ def test_patch_request(stub_server):
 
 
 def test_put_request(stub_server):
-    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
-    response = requests.put("http://localhost:8181/posts/1", json={
+    response = requests.put("http://localhost:8282/posts/1", json={
         "title": "foo",
         "body": "baz",
         "userId": 1
@@ -65,11 +62,6 @@ def test_put_request(stub_server):
 
 
 def test_delete_request(stub_server):
-    LoadedCassette("tests/fixtures/json_placeholder_crud.yaml")
-    response = requests.delete("http://localhost:8181/posts/1")
+    response = requests.delete("http://localhost:8282/posts/1")
     
     assert response.status_code == 200
-
-
-if __name__ == '__main__':
-    unittest.main()
