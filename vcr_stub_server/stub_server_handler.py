@@ -1,8 +1,10 @@
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote
 
 from http.server import BaseHTTPRequestHandler
 from vcr.cassette import Cassette
-import vcr
+import vcr as vcrpy
+
+vcr = vcrpy.VCR()
 
 
 def BuildHandlerClassWithCassette(cassette_path=None):
@@ -67,7 +69,11 @@ def BuildHandlerClassWithCassette(cassette_path=None):
 
 
 def _load_cassette(cassette_path):
-    vcrpy_cassette = Cassette.load(path=cassette_path)
+    config = vcr.get_merged_config()
+    config.pop("path_transformer")
+    config.pop("func_path_generator")
+    
+    vcrpy_cassette = Cassette.load(path=cassette_path, **config)
     vcr_cassette_host = None
 
     for request in vcrpy_cassette.requests:
