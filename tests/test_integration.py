@@ -7,6 +7,7 @@ import requests
 import pytest
 
 from vcr_stub_server.stub_server_handler import BuildHandlerClassWithCassette
+from vcr_stub_server.cassettes.vcrpy_cassette import VcrpyCassette
 from http.server import HTTPServer
 
 
@@ -15,9 +16,12 @@ def stub_server():
     host = "localhost"
     port = 8282
 
-    handler_class = BuildHandlerClassWithCassette(
+    vcr_cassette = VcrpyCassette(
         cassette_path="tests/fixtures/json_placeholder_crud.yaml"
     )
+
+    handler_class = BuildHandlerClassWithCassette(vcr_cassette=vcr_cassette)
+
     http_server = HTTPServer((host, port), handler_class)
 
     server_thread = threading.Thread(target=http_server.serve_forever)

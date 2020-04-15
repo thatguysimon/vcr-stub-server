@@ -1,16 +1,10 @@
-from urllib.parse import urlparse, quote
-
 from http.server import BaseHTTPRequestHandler
-from vcr.cassette import Cassette
-import vcr as vcrpy
-
-vcr = vcrpy.VCR()
 
 
-def BuildHandlerClassWithCassette(cassette_path=None):
+def BuildHandlerClassWithCassette(vcr_cassette):
     class StubServerHandler(BaseHTTPRequestHandler):
         def __init__(self, *args, **kwargs):
-            self.vcrpy_cassette, self.vcr_cassette_host = _load_cassette(cassette_path)
+            self.vcr_cassette = vcr_cassette
 
             super().__init__(*args, **kwargs)
 
@@ -18,37 +12,30 @@ def BuildHandlerClassWithCassette(cassette_path=None):
             return
 
         def do_GET(self):
-            self.respond("GET")
+            self._respond(method="GET")
 
         def do_DELETE(self):
-            self.respond("DELETE")
+            self._respond(method="DELETE")
 
         def do_POST(self):
-            self.respond("POST")
+            self._respond(method="POST")
 
         def do_PATCH(self):
-            self.respond("PATCH")
+            self._respond(method="PATCH")
 
         def do_PUT(self):
-            self.respond("PUT")
+            self._respond(method="PUT")
 
-        def respond(self, method):
-            request_headers = vcr.request.HeadersDict(self.headers)
+        def _respond(self, method: str):
             request_body = None
 
-            if "Content-Length" in request_headers:
-                request_content_length = int(request_headers["Content-Length"])
+            if "Content-Length" in self.headers:
+                request_content_length = int(self.headers["Content-Length"])
                 request_body = self.rfile.read(request_content_length)
 
-            request = vcr.request.Request(
-                method,
-                f"{self.vcr_cassette_host}{self.path}",
-                request_body,
-                request_headers,
+            response = self.vcr_cassette.response_for(
+                method=method, path=self.path, body=request_body, headers=self.headers,
             )
-
-            encoded_response = self.vcrpy_cassette.responses_of(request)[0]
-            response = vcr.filters.decode_response(encoded_response)
 
             self.send_response(
                 response["status"]["code"], response["status"]["message"]
@@ -66,27 +53,3 @@ def BuildHandlerClassWithCassette(cassette_path=None):
             self.wfile.write(response["body"]["string"])
 
     return StubServerHandler
-
-
-def _load_cassette(cassette_path):
-    config = vcr.get_merged_config()
-    config.pop("path_transformer")
-    config.pop("func_path_generator")
-    
-    vcrpy_cassette = Cassette.load(path=cassette_path, **config)
-    vcr_cassette_host = None
-
-    for request in vcrpy_cassette.requests:
-        parsed_url = urlparse(request.uri)
-        current_interaction_request_host = f"{parsed_url.scheme}://{parsed_url.netloc}"
-
-        if (
-            current_interaction_request_host != vcr_cassette_host
-            and vcr_cassette_host != None
-        ):
-            raise Exception("More than one host found in cassette interactions")
-
-        if vcr_cassette_host == None:
-            vcr_cassette_host = current_interaction_request_host
-
-    return vcrpy_cassette, vcr_cassette_host

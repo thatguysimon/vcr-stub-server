@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 
-import time
 import argparse
+import time
+import os.path
 
 from http.server import HTTPServer
 
 from vcr_stub_server.stub_server_handler import BuildHandlerClassWithCassette
+from vcr_stub_server.cassettes.vcrpy_cassette import VcrpyCassette
 
+
+CASSETTE_FORMAT_TO_CLASS = {"vcrpy": VcrpyCassette}
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -26,6 +30,15 @@ parser.add_argument(
     help="Specify alternate port [default: 8000]",
 )
 parser.add_argument(
+    "--cassette-format",
+    "-cf",
+    action="store",
+    choices=CASSETTE_FORMAT_TO_CLASS.keys(),
+    default="vcrpy",
+    type=str,
+    help="Specify VCR implementation [default: vcrpy]",
+)
+parser.add_argument(
     "path",
     action="store",
     default=8181,
@@ -39,7 +52,13 @@ host = args.bind
 port = args.port
 cassette_path = args.path
 
-handler_class = BuildHandlerClassWithCassette(cassette_path=cassette_path)
+if not os.path.isfile(cassette_path):
+    raise ValueError("Invalid cassette file path")
+
+vcr_cassette = CASSETTE_FORMAT_TO_CLASS[args.cassette_format](
+    cassette_path=cassette_path
+)
+handler_class = BuildHandlerClassWithCassette(vcr_cassette=vcr_cassette)
 
 print(time.asctime(), f"Starting VCR stub server for cassette: {cassette_path}")
 http_server = HTTPServer((host, port), handler_class)
