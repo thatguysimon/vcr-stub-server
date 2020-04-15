@@ -17,7 +17,7 @@ Therfore **this tool currently only supports [VCR.py](https://github.com/kevin10
 ## Installation
 
 ```
-pip install vcr-stub-server
+$ pip install vcr-stub-server
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ pip install vcr-stub-server
 Once the package is installed, use the `vcr-stub-server` command to spin up your stub server.
 
 ```
-vcr-stub-server path/to/vcr_cassette.yml
+$ vcr-stub-server path/to/vcr_cassette.yml
 ```
 
 ## Contributing
