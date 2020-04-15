@@ -1,8 +1,13 @@
 [tool.poetry]
 name = "vcr-stub-server"
-version = "0.1.0"
+version = "0.1.2"
 description = "Standalone stub server for replaying VCR cassettes"
+license = "MIT"
 authors = ["Simon Nizov <simon.nizov@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/thatguysimon/vcr-stub-server"
+repository = "https://github.com/thatguysimon/vcr-stub-server"
+keywords = ["vcr", "vcrpy", "stub", "standalone", "server"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
@@ -18,3 +23,6 @@ ipdb = "^0.13.2"
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+poetry = 'vcr_stub_server.__main__:main'
