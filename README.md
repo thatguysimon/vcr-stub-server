@@ -1,5 +1,7 @@
 # vcr-stub-server
 
+[![PyPI version](https://badge.fury.io/py/vcr-stub-server.svg)](https://pypi.org/project/vcr-stub-server/)
+
 This is a small tool for setting up a lightweight stub server that replays previously recorded VCR cassettes.
 
 Usually VCR is used internally while running the test suite. In that case, the library is responsible for intercepting HTTP requests. 
