@@ -1,6 +1,9 @@
 # vcr-stub-server
 
-[![PyPI version](https://badge.fury.io/py/vcr-stub-server.svg)](https://pypi.org/project/vcr-stub-server/)
+[![pypi-version](https://img.shields.io/pypi/v/vcr-stub-server.svg)](https://pypi.org/project/vcr-stub-server/)
+[![python-version](https://img.shields.io/pypi/pyversions/vcr-stub-server)](https://pypi.org/project/vcr-stub-server/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 
 This is a small tool for setting up a lightweight stub server that replays previously recorded VCR cassettes.
 
