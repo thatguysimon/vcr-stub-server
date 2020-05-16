@@ -66,3 +66,9 @@ def test_delete_request(stub_server):
     response = requests.delete("http://localhost:8282/posts/1")
 
     assert response.status_code == 200
+
+
+def test_response_not_found(stub_server):
+    response = requests.get("http://localhost:8282/unrecorded_request")
+
+    assert response.status_code == 500

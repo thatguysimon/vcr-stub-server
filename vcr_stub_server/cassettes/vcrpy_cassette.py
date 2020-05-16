@@ -1,6 +1,10 @@
 from urllib.parse import urlparse, quote
 
-from vcr_stub_server.cassettes.base_vcr_cassette import BaseVcrCassette
+from vcr_stub_server.cassettes.base_vcr_cassette import (
+    BaseVcrCassette,
+    ResponseNotFound,
+    MultipleHostsInCassette,
+)
 
 from vcr.cassette import Cassette
 import vcr as vcrpy
@@ -24,7 +28,9 @@ class VcrpyCassette(BaseVcrCassette):
             )
 
             if current_interaction_request_host != self._host and self._host != None:
-                raise Exception("More than one host found in cassette interactions")
+                raise MultipleHostsInCassette(
+                    "More than one host found in cassette interactions"
+                )
 
             if self._host == None:
                 self._host = current_interaction_request_host
@@ -33,5 +39,9 @@ class VcrpyCassette(BaseVcrCassette):
         headers = vcrpy.request.HeadersDict(headers)
         request = vcrpy.request.Request(method, f"{self._host}{path}", body, headers)
 
-        encoded_response = self.vcrpy_cassette.responses_of(request)[0]
+        try:
+            encoded_response = self.vcrpy_cassette.responses_of(request)[0]
+        except vcrpy.errors.UnhandledHTTPRequestError as e:
+            raise ResponseNotFound(str(e))
+
         return vcrpy.filters.decode_response(encoded_response)

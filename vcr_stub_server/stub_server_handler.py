@@ -1,5 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 
+from vcr_stub_server.cassettes.base_vcr_cassette import ResponseNotFound
+
 
 def BuildHandlerClassWithCassette(vcr_cassette):
     class StubServerHandler(BaseHTTPRequestHandler):
@@ -33,9 +35,18 @@ def BuildHandlerClassWithCassette(vcr_cassette):
                 request_content_length = int(self.headers["Content-Length"])
                 request_body = self.rfile.read(request_content_length)
 
-            response = self.vcr_cassette.response_for(
-                method=method, path=self.path, body=request_body, headers=self.headers,
-            )
+            try:
+                response = self.vcr_cassette.response_for(
+                    method=method,
+                    path=self.path,
+                    body=request_body,
+                    headers=self.headers,
+                )
+            except ResponseNotFound as e:
+                self.send_error(
+                    500, f"Response not found for request {method} {self.path}; {e}"
+                )
+                return
 
             self.send_response(
                 response["status"]["code"], response["status"]["message"]
