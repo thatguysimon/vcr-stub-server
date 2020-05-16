@@ -12,6 +12,7 @@ from vcr_stub_server.cassettes.vcrpy_cassette import VcrpyCassette
 
 CASSETTE_FORMAT_TO_CLASS = {"vcrpy": VcrpyCassette}
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -56,9 +57,9 @@ def main():
     if not os.path.isfile(cassette_path):
         raise ValueError("Invalid cassette file path")
 
-    vcr_cassette = CASSETTE_FORMAT_TO_CLASS[args.cassette_format](
-        cassette_path=cassette_path
-    )
+    vcr_cassette_class = CASSETTE_FORMAT_TO_CLASS[args.cassette_format]
+    vcr_cassette = vcr_cassette_class(cassette_path=cassette_path)
+
     handler_class = BuildHandlerClassWithCassette(vcr_cassette=vcr_cassette)
 
     print(time.asctime(), f"Starting VCR stub server for cassette: {cassette_path}")
