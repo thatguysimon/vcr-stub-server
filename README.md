@@ -15,7 +15,7 @@ One such case might come when implementing usage of [Pact](http://pact.io), wher
 
 #### Caveats
 
-- Unfortunately, there is no one standard for cassette YAML files, each VCR implementation is different. For example, cassette YAML files created by VCR.py won't be compatible with YAML files created by the Ruby implementation of VCR, etc.
+- Unfortunately, there isn't _one_ standard for cassette YAML files, each VCR implementation does it differently. For example, cassette YAML files created by VCR.py won't be compatible with YAML files created by the Ruby implementation of VCR, etc.
 
   Therfore **this tool currently only supports [VCR.py](https://github.com/kevin1024/vcrpy)**, using the library's own implementation of parsing the YAML files.
   
